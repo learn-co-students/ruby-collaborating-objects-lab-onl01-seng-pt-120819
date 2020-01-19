@@ -15,11 +15,16 @@ class Artist
   end
   
   def add_song(song)
-    Song.new(self) = song
+    
+    song.artist = self
   end
   
   def songs 
-   
+   Song.all.collect {|song| 
+   if song.artist == self
+     song
+   end
+   }
   end
   
   def self.find_or_create_by_name(name)
