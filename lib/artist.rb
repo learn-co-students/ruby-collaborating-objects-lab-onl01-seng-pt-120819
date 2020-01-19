@@ -1,6 +1,6 @@
 class Artist 
   
-  attr_accessor :name 
+  attr_accessor :name
   
   @@all = []
   
@@ -15,11 +15,25 @@ class Artist
   end
   
   def add_song(song)
-    song.artist = self
+    Song.new(self) = song
   end
   
   def songs 
-    self.each{ |filename| Song.new_by_filename(filename) }
+   
+  end
+  
+  def self.find_or_create_by_name(name)
+    if @@all.each {|artist| artist.name == name}
+      artist 
+    else 
+      self.new(name)
+    end
+  end
+  
+  def print_songs
+    if Song.artist == self 
+      Song.all
+    end
   end
   
 end
