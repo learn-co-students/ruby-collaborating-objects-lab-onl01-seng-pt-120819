@@ -1,4 +1,4 @@
-# Ruby Collaborating Objects Lab
+has # Ruby Collaborating Objects Lab
 
 ## Objective
 
