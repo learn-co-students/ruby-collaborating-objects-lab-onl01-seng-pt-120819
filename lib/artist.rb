@@ -30,8 +30,8 @@ class Artist
   
   def print_songs
     #binding.pry
-    @@all.each { |artist|
-    puts"#{artist.name}"
+    self.songs.each { |song|
+    puts"#{song.name}"
     }
   end
   

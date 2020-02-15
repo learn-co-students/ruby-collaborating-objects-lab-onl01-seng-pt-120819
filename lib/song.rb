@@ -1,3 +1,4 @@
+require 'pry'
 class Song
   attr_accessor :artist, :name
   @@all = []
@@ -7,12 +8,9 @@ class Song
     save
   end
   
-  def artist_name
-    if artist!=nil
-    @artist=artist.name
-    else
-      return nil
-    end
+  def artist_name=(name)
+    self.artist=Artist.find_or_create_by_name(name)
+    self.artist.add_song(self)
   end
  
   def save
@@ -23,6 +21,13 @@ class Song
     @@all
   end
   
-
+  def self.new_by_filename(file)
+    songname=file.split(" - ")[1]
+    artist=file.split(" - ")[0]
+    song=self.new(songname)
+    song.artist_name = artist
+    song
+    #binding.pry
+  end
 
 end
